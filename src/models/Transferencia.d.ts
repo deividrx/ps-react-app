@@ -15,6 +15,6 @@ export interface TransferenciaPageDto {
 
 export interface TransferenciaRequestParam {
   operador?: string
-  dataInicio?: Date
-  dataFim?: Date
+  dataInicio?: Date | null
+  dataFim?: Date | null
 }

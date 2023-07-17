@@ -9,7 +9,15 @@ import useTransferenciaRepository from "./TransferenciaRepository";
 
 export default function useTransferenciaViewModel() {
   const contaProvider = useContaProvider();
-  const { control, handleSubmit } = useForm<TransferenciaRequestParam>();
+  const { control, handleSubmit } = useForm<TransferenciaRequestParam>(
+    {
+      defaultValues: {
+        operador: "",
+        dataFim: null,
+        dataInicio: null
+      }
+    }
+  );
   const [data, setData] = useState<TransferenciaPageDto>();
   const { listTransferencias } = useTransferenciaRepository();
   const [loading, setLoading] = useState(false);
