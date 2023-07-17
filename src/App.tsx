@@ -8,6 +8,7 @@ import ContaProvider from './pages/conta/ContaProvider';
 import ContaView from './pages/conta/detail/ContaView';
 import ContaDialog from './pages/conta/dialog/ContaDialog';
 import TransferenciaView from './pages/transferencia/TransferenciaView';
+import 'dayjs/locale/pt-br';
 
 const cache = createIntlCache();
 
@@ -21,7 +22,9 @@ const darkTheme = createTheme({ palette: { mode: 'dark' } });
 
 function App() {
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <LocalizationProvider dateAdapter={AdapterDayjs}
+      adapterLocale="pt-br"
+    >
       <RawIntlProvider value={intl} >
         <ThemeProvider theme={darkTheme}>
           <CssBaseline />
