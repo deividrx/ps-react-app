@@ -1,6 +1,6 @@
 import SearchOutlined from "@mui/icons-material/SearchOutlined";
 import { Button, Card, Typography } from "@mui/material";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridValueFormatterParams } from "@mui/x-data-grid";
 import { FormattedNumber } from "react-intl";
 import { intl } from "../../App";
 import { FormDatePicker, FormTextField } from "../../core/components/forms";
@@ -22,7 +22,9 @@ const columns: GridColDef[] = [
     flex: 1,
     field: 'dataTransferencia',
     headerName: 'Valentia',
-    valueFormatter: (params) => intl.formatDate(params.value)
+    valueFormatter: (params ) => {
+      return `${intl.formatDate(params.value)} ${intl.formatTime(params.value)}` 
+    }
   },
   {
     flex: 1,
