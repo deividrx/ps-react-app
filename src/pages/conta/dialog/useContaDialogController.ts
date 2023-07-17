@@ -1,4 +1,4 @@
-import { GridCallbackDetails, GridPaginationModel, GridRowParams, MuiEvent } from "@mui/x-data-grid";
+import { GridCallbackDetails, GridPaginationModel, GridRowParams, MuiEvent, useGridApiRef } from "@mui/x-data-grid";
 import { useEffect, useState } from "react"
 import { gridPaginationModelToPageable } from "../../../core/page";
 import { ContaDto } from "../../../models/Conta";
@@ -17,7 +17,7 @@ export default function useContaDialogViewModel() {
       pageSize: 5
     }
   );
-  const { listContas } = useContaRepository();
+  const contaRepository = useContaRepository();
 
   function onRowSelected(params: GridRowParams, event: MuiEvent<React.MouseEvent>,
     details: GridCallbackDetails) {
@@ -33,11 +33,11 @@ export default function useContaDialogViewModel() {
   useEffect(() => {
     if (dialogProvider.open) {
       const pageable: Pageable = gridPaginationModelToPageable(paginationModel)
-      listContas(pageable)
+      contaRepository.listContas(pageable)
         .then(r => setData(r.data))
         .catch(r => alert(r))
     }
-  }, [paginationModel, dialogProvider.open, listContas])
+  }, [paginationModel, dialogProvider.open])
 
   return {
     data,
