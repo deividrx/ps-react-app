@@ -33,9 +33,9 @@ export default function useContaDialogViewModel() {
   useEffect(() => {
     if (dialogProvider.open) {
       const pageable: Pageable = gridPaginationModelToPageable(paginationModel)
-      contaRepository.listContas(pageable).then(
-        r => setData(r.data)
-      )
+      contaRepository.listContas(pageable)
+        .then(r => setData(r.data))
+        .catch(r => alert(r))
     }
   }, [paginationModel, dialogProvider.open])
 

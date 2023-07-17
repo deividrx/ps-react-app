@@ -22,9 +22,10 @@ export default function useTransferenciaViewModel() {
 
   function list(params?: TransferenciaRequestParam, pageable?: Pageable) {
     setLoading(true)
-    listTransferencias(conta.id, params, pageable).then(
-      res => setData(res.data)
-    ).finally(() => setLoading(false));
+    listTransferencias(conta.id, params, pageable)
+      .then(res => setData(res.data))
+      .finally(() => setLoading(false))
+      .catch(r => alert(r));
   }
 
   function onPaginationModelChange(model: GridPaginationModel, details: GridCallbackDetails) {
@@ -38,7 +39,7 @@ export default function useTransferenciaViewModel() {
 
   useEffect(() => {
     const pageable = gridPaginationModelToPageable(paginationModel);
-    if (contaProvider.currentConta) list(filter, pageable);
+    if (contaProvider.haveConta()) list(filter, pageable);
   }, [contaProvider.currentConta, paginationModel])
 
   return {
