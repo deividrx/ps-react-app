@@ -1,13 +1,13 @@
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { createIntl, createIntlCache, IntlProvider, RawIntlProvider } from 'react-intl';
+import { createIntl, createIntlCache, RawIntlProvider } from 'react-intl';
 import './App.css';
-import ContaDialogProvider from './view/conta/ContaDialogProvider';
-import ContaProvider from './view/conta/ContaProvider';
-import ContaView from './view/conta/detail/ContaView';
-import ContaDialog from './view/conta/dialog/ContaDialog';
-import TransferenciaView from './view/transferencia/TransferenciaView';
+import ContaDialogProvider from './pages/conta/ContaDialogProvider';
+import ContaProvider from './pages/conta/ContaProvider';
+import ContaView from './pages/conta/detail/ContaView';
+import ContaDialog from './pages/conta/dialog/ContaDialog';
+import TransferenciaView from './pages/transferencia/TransferenciaView';
 
 const cache = createIntlCache();
 

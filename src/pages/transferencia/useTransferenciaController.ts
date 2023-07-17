@@ -1,7 +1,7 @@
 import { GridCallbackDetails, GridPaginationModel } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { gridPaginationModelToPageable } from "../../data/page";
+import { gridPaginationModelToPageable } from "../../core/page";
 import { Pageable } from "../../models/Page";
 import { TransferenciaPageDto, TransferenciaRequestParam } from "../../models/Transferencia";
 import { useContaProvider } from "../conta/ContaProvider";

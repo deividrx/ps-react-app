@@ -1,6 +1,6 @@
 import { GridCallbackDetails, GridPaginationModel, GridRowParams, MuiEvent, useGridApiRef } from "@mui/x-data-grid";
 import { useEffect, useState } from "react"
-import { gridPaginationModelToPageable } from "../../../data/page";
+import { gridPaginationModelToPageable } from "../../../core/page";
 import { ContaDto } from "../../../models/Conta";
 import { Page, Pageable } from "../../../models/Page";
 import { useContaDialog } from "../ContaDialogProvider";

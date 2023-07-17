@@ -1,5 +1,5 @@
-import { TextField, TextFieldProps, TextFieldVariants } from "@mui/material";
-import { DatePicker } from "@mui/x-date-pickers";
+import { TextField, TextFieldVariants } from "@mui/material";
+import { DesktopDatePicker } from "@mui/x-date-pickers";
 import { Controller } from "react-hook-form";
 import { FormTextFieldProps } from './forms.d'
 
@@ -32,7 +32,7 @@ export function FormDatePicker(props: any) {
       control={props.control}
       render={
         ({ field, fieldState, formState }) => (
-          <DatePicker
+          <DesktopDatePicker
             onChange={field.onChange}
             value={field.value}
             {...props}
