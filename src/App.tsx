@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { createIntl, createIntlCache, IntlProvider, RawIntlProvider } from 'react-intl';
 import './App.css';
+import ContaDialogProvider from './view/conta/ContaDialogProvider';
+import ContaProvider from './view/conta/ContaProvider';
+import ContaView from './view/conta/detail/ContaView';
+import ContaDialog from './view/conta/dialog/ContaDialog';
+import TransferenciaView from './view/transferencia/TransferenciaView';
+
+const cache = createIntlCache();
+
+export const intl = createIntl({
+  locale: 'pt-BR',
+  messages: {}
+}, cache)
+
+
+const darkTheme = createTheme({ palette: { mode: 'dark' } });
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <RawIntlProvider value={intl} >
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline />
+          <ContaProvider>
+            <ContaDialogProvider initOpen={true}>
+              <ContaView />
+              <TransferenciaView />
+              <ContaDialog/>
+            </ContaDialogProvider>
+          </ContaProvider>
+        </ThemeProvider>
+      </RawIntlProvider>
+    </LocalizationProvider>
   );
 }
 
